@@ -1,0 +1,23 @@
+Introduction
+1. Quality Control
+2. Quality check & Quality Assurance definition
+3. Selecting required quality level
+4. Types of quality checks - manual and automatic
+5. Areas of quality checks - reliability, security, regression, maintainability
+
+Manual:
+manual testing of code style - code review
+manual testing of code functionality
+
+Levels of quality check maturity
+0. No quality checks at all
+1. Manual checks after release (by ourselves or dedicated QA tester / team)
+2. Code review process (Pull Request model)
+3. Locally executed unit tests & code style tests
+4. CI server running & enforcing successful compilation / passing tests - no longer responsibility of reviewer
+5. Faster feedback - pre-commit or on save hooks for code style
+6. Automation of boring tasks - code autoformatters (prettier, black), extended checks (big files, secrets, merge conflicts)
+7. Calculation of various code metrics - test coverage, Maintainability Index, Cyclomatic Complexity, Lines of Code etc
+8. Dependency scanning & license management
+9. Higher level tests (smoke, performance, security, E2E, acceptance etc)
+
