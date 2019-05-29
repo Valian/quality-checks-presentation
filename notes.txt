@@ -3,7 +3,7 @@ Introduction
 2. Quality check & Quality Assurance definition
 3. Selecting required quality level
 4. Types of quality checks - manual and automatic
-5. Areas of quality checks - reliability, security, regression, maintainability
+5. Areas of quality checks - features, security, regression, maintainability, performance
 
 Manual:
 manual testing of code style - code review
@@ -20,4 +20,3 @@ Levels of quality check maturity
 7. Calculation of various code metrics - test coverage, Maintainability Index, Cyclomatic Complexity, Lines of Code etc
 8. Dependency scanning & license management
 9. Higher level tests (smoke, performance, security, E2E, acceptance etc)
-

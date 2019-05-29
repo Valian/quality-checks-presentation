@@ -2,12 +2,12 @@
 .eg-theme-agrume
   #business-logic.eg-slideshow
     slide(enter="fadeIn", leave="fadeOut")
-      h1 Automatic quality checks
+      h1 Automatic quality control
 
       h2 Jakub Skałecki @jskalc
       h4.u-text-centered Mindspace, 30.05.2019
 
-    slide(enter="fadeIn", leave="fadeOut", steps="3")
+    slide(enter="fadeIn", leave="fadeOut", steps="2")
       h2 About me
       ul(v-if="step === 1")
         li Currently Technical Team Leader at VideoBeat
@@ -15,13 +15,142 @@
         li Backend, DevOps, Frontend, GameDev, Machine Learning...
         li Blogger (sometimes)
         li Polyglot programmer, technology enthusiast
-      h3(v-if="step === 2") Using docker everywhere for 4 years
-      h3(v-if="step === 3") This presentation was created with Docker help :)
+      h3(v-if="step === 2") Always trying to automate everything
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h2 Quality control
+      h3 Definition
+      em A part of quality management focused on fulfilling quality requirements, in order to reduce or avoid errors
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h2 Do we really need quality?
+      h3 Well, not always
+      ul
+        li Exploratory, POC projects
+        li
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h2 Manual approach
+      h3 SAD TESTER MEME
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h2 Automated approach
+      h3 NO TESTER MEME
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h2 Automated approach
+      h3 NO TESTER MEME
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h2 Areas of quality checks
+      h3 features, security, regression, maintainability, performance
+      
+    slide(enter="fadeIn", leave="fadeOut")
+      h2 Areas of quality checks
+    
+    slide(enter="fadeIn", leave="fadeOut")
+      h2 Levels of quality check maturity
+    
+    slide(enter="fadeIn", leave="fadeOut")
+      h3 Level 0
+      h2 No quality checks at all
+      h3 This is fine meme
+      
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h3 Level 1
+      h2 Manual verification after release
+      ul
+        li After each release manual tests are performed
+        li Small initial cost, but has a big long-term investment
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h3 Level 2
+      h2 Code review
+      ul
+        li Requires 2+ developers
+        li New code has to be approved by another person
+        li Committing directly to the main branch should be prohibited
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h3 Level 3
+      h2 Local unit & style tests
+      ul
+        li Unit tests are created using framework of choice
+        li They are started locally, on demand
+        li Checks for big files, secrets, merge conflicts
+        li Linters: flake8 (Python), jslint (Javascript), checkstyle (Java)
+        li Test runners: pytest (Pyton), jest (Javascript),
+        li WE HAVE TESTS BUT WE DON'T RUN THEM MEME
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h3 Level 4
+      h2 "on save" hooks for checking code style
+      ul
+        li Not manual anymore, started automatically
+        li Fast feedback
+        li After being configured once, usually no changes are needed
+        li Can be run "on save" or as pre-commit / pre-push git hooks
+        li Tools: git, pre-commit
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h3 Level 5
+      h2 Automatic fixing style violations
+      ul
+        li Manual fixing of code is highly repetitive
+        li Tools: Code autoformatters (prettier, black),
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h3 Level 6
+      h2 Continous Integration server
+      ul
+        li CI server running & enforcing successful build / tests pass
+        li It should be impossible to merge branch not passing tests
+        li Tools: Jenkins, Travis, Bitbucket pipelines, Gitlab runner
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h3 Level 7
+      h2 Calculation of various code metrics
+      ul
+        li Test coverage
+        li Maintainability Index
+        li Cyclomatic Complexity
+        li Tools: codeclimate, sonarqube
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h3 Level 8
+      h2 Dependency scanning & license management
+      ul
+        li Find vulnerabilities in used packages
+        li Check license compliance (avoid "viral" licenses, like GPL)
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h3 Level 9+
+      h2 Higher level tests
+      ul
+        li static / dynamic security testing
+        li End to End tests
+        li Smoke tests
+        li performance tests
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h2 Summary
+      h3 Higher you are, faster you move
+      h3 But first calculate ROI
+
+    slide(enter="fadeIn", leave="fadeOut")
+      h2 Live demo
+
+
+
+
+
+
 
 
     slide(enter="fadeIn", leave="fadeOut")
       .u-text-centered
-        img.presentation-image--solo(src="./assets/docker.svg")
+        img.presentation-image--solo(src="")
 
     slide(enter="fadeIn", leave="fadeOut", steps="2")
       h2 Docker is a solution
@@ -50,7 +179,7 @@
         li(v-if="step > 2") no separation between projects - different version of database anyone?
         li(v-if="step > 3") Virtual machines are a partial solution, but adds overhead
       .u-text-centered
-        img.presentation-image(src="./assets/ha-ha-works-on-my-machine.jpg", v-if="step > 4")
+        img.presentation-image(src="", v-if="step > 4")
 
     slide(enter="fadeIn", leave="fadeOut", steps="2")
       h2 How Docker can help you?
@@ -83,7 +212,7 @@
     slide(enter="fadeIn", leave="fadeOut")
       .u-text-centered
         eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut')
-          img.presentation-image--solo(src="./assets/magic.gif", width="80%")
+          img.presentation-image--solo(src="", width="80%")
 
 
     slide(enter="fadeIn", leave="fadeOut", steps="5")
@@ -211,7 +340,7 @@
     slide(enter="fadeIn", leave="fadeOut")
       h2 Comparision vs VM
       .u-text-centered
-        img.presentation-image(src="./assets/docker_vs_vm.jpeg")
+        img.presentation-image(src="")
 
     slide(enter="fadeIn", leave="fadeOut")
       h2 Thank you!
