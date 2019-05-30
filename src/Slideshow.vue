@@ -7,7 +7,7 @@
       h2 Jakub Skałecki @jskalc
       h4.u-text-centered Mindspace, 30.05.2019
 
-    slide(enter="fadeIn", leave="fadeOut", steps="2")
+    slide(enter="fadeIn", leave="fadeOut")
       h2 About me
       ul(v-if="step === 1")
         li Currently Technical Team Leader at VideoBeat
@@ -15,123 +15,163 @@
         li Backend, DevOps, Frontend, GameDev, Machine Learning...
         li Blogger (sometimes)
         li Polyglot programmer, technology enthusiast
-      h3(v-if="step === 2") Always trying to automate everything
 
-    slide(enter="fadeIn", leave="fadeOut")
+    slide(enter="fadeIn", leave="fadeOut", steps="2")
       h2 Quality control
       h3 Definition
-      em A part of quality management focused on fulfilling quality requirements, in order to reduce or avoid errors
+      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step > 1")
+        blockquote A part of quality management focused on fulfilling quality requirements, in order to reduce or avoid errors
 
-    slide(enter="fadeIn", leave="fadeOut")
-      h2 Do we really need quality?
-      h3 Well, not always
-      ul
+    slide(enter="fadeIn", leave="fadeOut", steps="3")
+      h2 Do we really need highest possible quality?
+      h3(v-if="step == 1") Well, not always
+      ul(v-if="step == 2")
         li Exploratory, POC projects
-        li
+        li Internal tools
+      div(v-if="step == 3")
+        h3 On the other hand
+        eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut')
+          blockquote Some automation of quality checks almost always pays off
+
+    slide(enter="fadeIn", leave="fadeOut", steps="6")
+      h2 Main areas of quality checks
+
+      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step === 2")
+        h2 features
+
+      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step === 3")
+        h2 security
+
+      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step === 4")
+        h2 regression
+
+      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step === 5")
+        h2 maintainability
+
+      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step === 6")
+        h2 performance
+
 
     slide(enter="fadeIn", leave="fadeOut")
-      h2 Manual approach
-      h3 SAD TESTER MEME
+      h2 Levels of quality control maturity
 
-    slide(enter="fadeIn", leave="fadeOut")
-      h2 Automated approach
-      h3 NO TESTER MEME
-
-    slide(enter="fadeIn", leave="fadeOut")
-      h2 Automated approach
-      h3 NO TESTER MEME
-
-    slide(enter="fadeIn", leave="fadeOut")
-      h2 Areas of quality checks
-      h3 features, security, regression, maintainability, performance
-      
-    slide(enter="fadeIn", leave="fadeOut")
-      h2 Areas of quality checks
-    
-    slide(enter="fadeIn", leave="fadeOut")
-      h2 Levels of quality check maturity
-    
-    slide(enter="fadeIn", leave="fadeOut")
+    slide(enter="fadeIn", leave="fadeOut", steps="3")
       h3 Level 0
-      h2 No quality checks at all
-      h3 This is fine meme
-      
+      h2(v-if="step > 1") No quality checks at all
+      eg-transition(enter='bounceInLeft', leave='fadeOut', v-if="step > 2")
+        div.u-text-centered
+           img.presentation-image(src="./assets/this-is-fine.jpg", width="100%")
 
-    slide(enter="fadeIn", leave="fadeOut")
+    slide(enter="fadeIn", leave="fadeOut", steps="5")
       h3 Level 1
-      h2 Manual verification after release
+      h2(v-if="step > 1") Manual verification after release
       ul
-        li After each release manual tests are performed
-        li Small initial cost, but has a big long-term investment
+        li(v-if="step > 1 && step < 5") After each release manual tests are performed
+        li(v-if="step > 2 && step < 5") Small initial cost, but very costly long-term
+        li(v-if="step > 3 && step < 5") Most projects are at this level
+        eg-transition(enter='bounceInLeft', leave='fadeOut', v-if="step > 4")
+          div.u-text-centered
+            img.presentation-image(src="./assets/manual-testing.jpg")
 
-    slide(enter="fadeIn", leave="fadeOut")
+    slide(enter="fadeIn", leave="fadeOut", steps="5")
       h3 Level 2
-      h2 Code review
+      h2(v-if="step > 1 && step < 5") Code review
       ul
-        li Requires 2+ developers
-        li New code has to be approved by another person
-        li Committing directly to the main branch should be prohibited
+        li(v-if="step > 2 && step < 5") Requires 2+ developers
+        li(v-if="step > 2 && step < 5") New code has to be approved by another person
+        li(v-if="step > 3 && step < 5") Committing directly to the main branch should be <strong>prohibited</strong>
+        li(v-if="step > 4 && step < 5") This part can't be automated, but can be made much easier
+      eg-transition(enter='bounceInLeft', leave='fadeOut', v-if="step > 4")
+          div.u-text-centered
+            img.presentation-image(src="./assets/3ksloc.jpg")
 
-    slide(enter="fadeIn", leave="fadeOut")
+    slide(enter="fadeIn", leave="fadeOut", steps="6")
       h3 Level 3
-      h2 Local unit & style tests
+      h2(v-if="step > 1 && step < 6") Local unit & style tests
       ul
-        li Unit tests are created using framework of choice
-        li They are started locally, on demand
-        li Checks for big files, secrets, merge conflicts
-        li Linters: flake8 (Python), jslint (Javascript), checkstyle (Java)
-        li Test runners: pytest (Pyton), jest (Javascript),
-        li WE HAVE TESTS BUT WE DON'T RUN THEM MEME
+        li(v-if="step > 2 && step < 5") Unit tests are created using framework of choice
+        li(v-if="step > 3 && step < 5") They are started locally, on demand
+        li(v-if="step > 3 && step < 5") Checks for big files, secrets, merge conflicts
+        li(v-if="step > 4 && step < 6") Linters: flake8, jslint, checkstyle
+        li(v-if="step > 4 && step < 6") Test runners: pytest, jest
+      eg-transition(enter='bounceInLeft', leave='fadeOut', v-if="step > 5")
+          div.u-text-centered
+            img.presentation-image(src="./assets/not-always-write-tests.jpg")
 
     slide(enter="fadeIn", leave="fadeOut")
+      eg-transition(enter='bounceInLeft', leave='fadeOut')
+        div.u-text-centered
+          img.presentation-image--solo(src="./assets/automate.jpg")
+
+    slide(enter="fadeIn", leave="fadeOut", steps="4")
+      h2 Git hooks
+      ul
+        li(v-if="step > 1 && step < 4") Allows to run a script before commit/push
+        li(v-if="step > 1 && step < 4") If script fails, commit / push is prevented
+        li(v-if="step > 2 && step < 4") Can be skipped using --no-verify flag
+        li(v-if="step > 2 && step < 4") Should be version controlled
+      eg-transition(enter='bounceInLeft', leave='fadeOut', v-if="step === 4")
+        h3 The easiest automation available!
+
+    slide(enter="fadeIn", leave="fadeOut", steps="7")
       h3 Level 4
-      h2 "on save" hooks for checking code style
+      h2(v-if="step > 1") Automated local tests
       ul
-        li Not manual anymore, started automatically
-        li Fast feedback
-        li After being configured once, usually no changes are needed
-        li Can be run "on save" or as pre-commit / pre-push git hooks
-        li Tools: git, pre-commit
+        li(v-if="step > 2") Not manual anymore, started automatically
+        li(v-if="step > 3") Fast feedback
+        li(v-if="step > 4") After being configured once, usually no changes are needed
+        li(v-if="step > 5") Can be run "on save" or as pre-commit / pre-push git hooks
+        li(v-if="step > 6") Tools: git, pre-commit
 
-    slide(enter="fadeIn", leave="fadeOut")
+    slide(enter="fadeIn", leave="fadeOut", steps="5")
       h3 Level 5
-      h2 Automatic fixing style violations
+      h2(v-if="step > 1 && step < 5") Automatic fixing style violations
       ul
-        li Manual fixing of code is highly repetitive
-        li Tools: Code autoformatters (prettier, black),
+        li(v-if="step > 2 && step < 5") Manual fixing of code is highly repetitive
+        li(v-if="step > 2 && step < 5") Direct improvement over previous step
+        li(v-if="step > 3 && step < 5") Tools: Code autoformatters (prettier, black)
+      eg-transition(enter='bounceInLeft', leave='fadeOut', v-if="step === 5")
+        h2 Most projects should reach this level
 
-    slide(enter="fadeIn", leave="fadeOut")
+    slide(enter="fadeIn", leave="fadeOut", steps="5")
       h3 Level 6
-      h2 Continous Integration server
+      h2(v-if="step > 1 && step < 5") Continous Integration server
       ul
-        li CI server running & enforcing successful build / tests pass
-        li It should be impossible to merge branch not passing tests
-        li Tools: Jenkins, Travis, Bitbucket pipelines, Gitlab runner
+        li(v-if="step > 2 && step < 5") CI server running & enforcing successful build / tests pass
+        li(v-if="step > 2 && step < 5") It should be impossible to merge branch not passing tests
+        li(v-if="step > 3 && step < 5") Tools: Jenkins, Travis, Bitbucket pipelines, Gitlab runner
+      eg-transition(enter='bounceInLeft', leave='fadeOut', v-if="step === 5")
+        div.u-text-centered
+          img.presentation-image--solo(src="./assets/ci.png")
 
-    slide(enter="fadeIn", leave="fadeOut")
+    slide(enter="fadeIn", leave="fadeOut", steps="6")
       h3 Level 7
-      h2 Calculation of various code metrics
+      h2(v-if="step > 1") Calculation of various code metrics
       ul
-        li Test coverage
-        li Maintainability Index
-        li Cyclomatic Complexity
-        li Tools: codeclimate, sonarqube
+        li(v-if="step > 2") Test coverage
+        li(v-if="step > 3") Maintainability Index
+        li(v-if="step > 4") Cyclomatic Complexity
+        li(v-if="step > 5") Tools: codeclimate, sonarqube
 
-    slide(enter="fadeIn", leave="fadeOut")
+    slide(enter="fadeIn", leave="fadeOut", steps="4")
       h3 Level 8
-      h2 Dependency scanning & license management
+      h2(v-if="step > 1") Dependency scanning & license management
       ul
-        li Find vulnerabilities in used packages
-        li Check license compliance (avoid "viral" licenses, like GPL)
+        li(v-if="step > 2") Find vulnerabilities in used packages
+        li(v-if="step > 3") Check license compliance (avoid "viral" licenses, like GPL)
 
-    slide(enter="fadeIn", leave="fadeOut")
-      h3 Level 9+
-      h2 Higher level tests
+    slide(enter="fadeIn", leave="fadeOut", steps="8")
+      h3 Level 9++
+      h2(v-if="step > 1") Higher level tests
       ul
-        li static / dynamic security testing
-        li End to End tests
-        li Smoke tests
-        li performance tests
+        li(v-if="step > 2 && step < 8") Static / dynamic security testing
+        li(v-if="step > 3 && step < 8") Smoke tests
+        li(v-if="step > 4 && step < 8") End to End tests
+        li(v-if="step > 5 && step < 8") Performance tests
+        li(v-if="step > 6 && step < 8") Tools: selenium, locust, vegetta
+      eg-transition(enter='bounceInLeft', leave='fadeOut', v-if="step === 8")
+        div.u-text-centered
+          img.presentation-image(src="./assets/smoke-testing.jpeg")
 
     slide(enter="fadeIn", leave="fadeOut")
       h2 Summary
@@ -140,207 +180,9 @@
 
     slide(enter="fadeIn", leave="fadeOut")
       h2 Live demo
-
-
-
-
-
-
-
-
-    slide(enter="fadeIn", leave="fadeOut")
-      .u-text-centered
-        img.presentation-image--solo(src="")
-
-    slide(enter="fadeIn", leave="fadeOut", steps="2")
-      h2 Docker is a solution
-      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step === 2")
-          h1 But what is the problem?
-
-    slide(enter="fadeIn", leave="fadeOut", steps="4")
-      br
-      eg-transition(v-if="step > 1", enter='bounceInLeft', leave='fadeOut')
-        h3 Development environment setup & updates
-      eg-transition(v-if="step > 2", enter='bounceInLeft', leave='fadeOut')
-        h3 Predictable, repeatable deployment
-      eg-transition(v-if="step > 3", enter='bounceInLeft', leave='fadeOut')
-        h3 Server resource utilization
-
-    slide(enter="fadeIn", leave="fadeOut", steps="3")
-      h2 Let's focus on the first one
-      h2(v-if="step > 1") Development setup
-      h3(v-if="step === 3") How are you dealing with it?
-
-    slide(enter="fadeIn", leave="fadeOut", steps="5")
-      h2 Development setup
-      p Previous approaches (my experience)
-      ul(v-if="step > 1 && step < 5")
-        li manual configuration using never written, "tribal knowledge" how to setup things
-        li(v-if="step > 2") no separation between projects - different version of database anyone?
-        li(v-if="step > 3") Virtual machines are a partial solution, but adds overhead
-      .u-text-centered
-        img.presentation-image(src="", v-if="step > 4")
-
-    slide(enter="fadeIn", leave="fadeOut", steps="2")
-      h2 How Docker can help you?
-      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step === 2")
-        h1 What is docker, after all?
-
-    slide(enter="fadeIn", leave="fadeOut", steps="4")
-      h2 My docker definition
-      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step > 1")
-        blockquote Docker is a framework to predictably create and run isolated, lightweight containers
-
-      h2(v-if="step > 2") And container?
-      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step > 3")
-        blockquote Container is a standard unit of software that packages up code and all its dependencies
-
-    slide(enter="fadeIn", leave="fadeOut", steps="2")
-      h2 Hello world
-      highlight-code.eg-code-block.code-box(lang="bash", v-if="step === 1").
-        # -i and -t are needed to connect input / output to the container
-        docker container run -it python
-
-        # after a while, it will show up
-        Python 3.7.1 (default, Oct 24 2018, 22:35:30)
-        [GCC 6.3.0 20170516] on linux
-        Type "help", "copyright", "credits" or "license" for information.
-        >>>|
-
-      cinema-player.u-text-centered(id="902zfwSgmDLLk58JCEoHqZIvr", size="big", v-if="step === 2")
-
-    slide(enter="fadeIn", leave="fadeOut")
-      .u-text-centered
-        eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut')
-          img.presentation-image--solo(src="", width="80%")
-
-
-    slide(enter="fadeIn", leave="fadeOut", steps="5")
-      h2 Hello world explanation
-      ul
-        li(v-if="step > 1") First, docker checks if image called python:alpine exists locally
-        li(v-if="step > 2") Since it doesn't, it checks if image exists in remote registry
-        li(v-if="step > 3") Yes, <a href="https://hub.docker.com/_/python/">it exists</a>, so docker pulls it
-        li(v-if="step > 4") And starts a container from python image with a command defined in the image <pre>python</pre>
-
-    slide(enter="fadeIn", leave="fadeOut", steps="4")
-      h2 Docker hub
-      p Biggest collection of publicly-available, actively maintained images
-      ul(v-if="step > 1")
-        li postgres? Sure!
-        li mysql? Of course!
-        li redis, rabbitmq, nginx? Also!
-        li your favourite language? I bet it's there!
-        li(v-if="step > 2") literally <strong>anything</strong>
-      p(v-if="step > 3") You can create and upload your own
-
-    slide(enter="fadeIn", leave="fadeOut", steps="4")
-      h2 Docker image
-      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step > 1")
-        blockquote A snapshot of a container, used to create other containers
-      h3(v-if="step > 2") OOP analogy
-      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step > 3")
-        blockquote Image is a class, container is an object
-
-    slide(enter="fadeIn", leave="fadeOut", steps="2")
-      h2 Basic workflow demo
-
-      highlight-code.eg-code-block.code-box(lang="bash", v-if="step === 1").
-        # download the newest version of the image
-        docker image pull postgres
-
-        # run in background, exposing port 5432 to host
-        docker run -d --name database -p 5432:5432 postgres
-
-        # display running containers
-        docker ps
-
-        # start / stop / remove container
-        docker stop / start / rm database
-
-        # remove image
-        docker image rm postgres
-      cinema-player.u-text-centered(id="gULNnYKTNR7efjbe7DST3SPqn", size="big", v-if="step === 2")
-
-    slide(enter="fadeIn", leave="fadeOut", steps="2")
-      h2 Dockerfile
-      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step > 1")
-        blockquote A step-by-step recipe how to create an image
-
-    slide(enter="fadeIn", leave="fadeOut")
-      h2 Dockerfile example
-      highlight-code.eg-code-block.code-box(lang="dockerfile").
-        FROM python:3.7
-
-        WORKDIR /srv
-
-        # install system packages
-        RUN apt-get update \
-         && apt-get install -y default-libmysqlclient-dev \
-         && rm -rf /var/lib/apt/lists/*
-
-        # install python packages
-        COPY requirements.txt .
-        RUN pip install -r requirements.txt
-
-        # copy rest of the code
-        COPY . .
-
-    slide(enter="fadeIn", leave="fadeOut")
-      h2 Dockerfile usage
-      cinema-player.u-text-centered(id="AfV3PhnWJhePfnftUaI7JXQCU", size="big")
-
-    slide(enter="fadeIn", leave="fadeOut", steps="3")
-      h2 Docker Compose
-      eg-transition.u-text-centered(enter='bounceInLeft', leave='fadeOut', v-if="step > 1")
-        blockquote Tool for managing multiple containers configuration
-      h3(v-if="step > 2") Very useful for development
-
-
-    slide(enter="fadeIn", leave="fadeOut")
-      h2 "Real world" example
-      highlight-code.eg-code-block.code-box(v-if="step === 1", lang="yaml").
-        # docker-compose.yaml
-        version: '2'
-        services:
-          database:
-            image: mysql:5.7
-            environment:
-              MYSQL_ROOT_PASSWORD: 'secret'
-
-          redis:
-            image: redis
-
-          app:
-            build: .
-            command: python manage.py runserver 0.0.0.0:8000
-            volumes:
-              - ./src/django:/srv
-            environment:
-              DJANGO_SETTINGS_MODULE: test.settings.development
-            ports:
-              - 8000:8000
-
-
-    slide(enter="fadeIn", leave="fadeOut")
-      h2 Demo from one of our projects
-      cinema-player.u-text-centered(id="afEYDA72DoFUXeWZA4ZS11K55", size="big")
-
-    slide(enter="fadeIn", leave="fadeOut", steps="2")
-      h2 The best part?
-      h1(v-if="step === 2") It's the same for every project!
-
-    slide(enter="fadeIn", leave="fadeOut", steps="2")
-      h2 Next steps - production environment benefits
-      ul
-        li Predictable deployment - exact same environment across multiple servers
-        li Ops doesn't have to worry about dependencies, they just "juggle" containers.
-        li Lower costs - you can put multiple isolated containers into one server
-
-    slide(enter="fadeIn", leave="fadeOut")
-      h2 Comparision vs VM
-      .u-text-centered
-        img.presentation-image(src="")
+      eg-transition(enter='bounceInLeft', leave='fadeOut')
+        div.u-text-centered
+          img.presentation-image(src="./assets/live-demo.jpg")
 
     slide(enter="fadeIn", leave="fadeOut")
       h2 Thank you!
@@ -375,7 +217,7 @@ export default {
       font-size: 0.8em;
       right: 20px;
       bottom: 20px;
-      background: url(https://logos-download.com/wp-content/uploads/2016/02/Twitter_logo_bird_transparent_png.png) no-repeat right;
+      background: url(./assets/twitter.png) no-repeat right;
       background-size: contain;
     }
 
